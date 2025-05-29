@@ -73,7 +73,7 @@ export const login = async (req, res) => {
          res.cookie('token', token,{
           httpOnly: true,
           secure: true, // Use secure cookies in production
-          sameSite: 'Strict', // Adjust as needed
+          sameSite: 'None', // Adjust as needed
         })
         res.json({
           message: 'Logged in successfully',
@@ -98,7 +98,7 @@ export const logout = (req, res) => {
             res.clearCookie('token',{
             httpOnly: true,
             secure: true, // Use secure cookies in production
-            sameSite: 'Strict', // Adjust as needed
+            sameSite: 'None', // Adjust as needed
         });
         res.json({ message: 'Logged out successfully' });
 
