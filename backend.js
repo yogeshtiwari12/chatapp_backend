@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://chatapp-frontend-lemon.vercel.app',
     credentials: true
 }));
 
