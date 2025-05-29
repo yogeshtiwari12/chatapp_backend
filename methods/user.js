@@ -70,8 +70,11 @@ export const login = async (req, res) => {
         }
   
   
-        res.cookie('token', token)
-  
+         res.cookie('token', token,{
+          httpOnly: true,
+          secure: true, // Use secure cookies in production
+          sameSite: 'Strict', // Adjust as needed
+        })
         res.json({
           message: 'Logged in successfully',
           role:user.role
@@ -92,7 +95,11 @@ export const logout = (req, res) => {
         if (!token) {
             return res.json({ message: 'Token not found' });
         }
-        res.clearCookie('token');
+            res.clearCookie('token',{
+            httpOnly: true,
+            secure: true, // Use secure cookies in production
+            sameSite: 'Strict', // Adjust as needed
+        });
         res.json({ message: 'Logged out successfully' });
 
     } catch (error) {
